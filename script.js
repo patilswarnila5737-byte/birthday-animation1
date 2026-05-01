@@ -6,12 +6,10 @@ window.onload = function() {
     const loadingOverlay = document.getElementById('loading-overlay');
     const mainContent = document.getElementById('main-content');
 
-    // लोडिंग बार आणि काउंटडाऊनचे लॉजिक
     const timer = setInterval(() => {
         progress += 1;
-        loaderFill.style.width = (progress / 50) * 100 + "%"; // ५ सेकंद = ५० स्टेप्स (दर १००ms)
+        loaderFill.style.width = (progress / 50) * 100 + "%";
 
-        // दर १ सेकंदाला नंबर बदलण्यासाठी
         if (progress % 10 === 0) {
             timeLeft--;
             if (timeLeft >= 1) {
@@ -19,11 +17,10 @@ window.onload = function() {
             }
         }
 
-        // ५ सेकंद पूर्ण झाल्यावर
         if (progress >= 50) {
             clearInterval(timer);
             loadingOverlay.style.opacity = '0';
-            loadingOverlay.style.transition = '0.5s';
+            loadingOverlay.style.transition = '0.5s opacity ease';
             
             setTimeout(() => {
                 loadingOverlay.style.display = 'none';
@@ -36,18 +33,20 @@ window.onload = function() {
 
 function openLetter() {
     const modal = document.getElementById('letterModal');
-    modal.style.display = "flex"; // "block" ऐवजी "flex" वापरा
-    document.body.style.overflow = "hidden"; // पत्र उघडल्यावर स्क्रोलिंग बंद
+    modal.style.display = "flex"; 
+    document.body.style.overflow = "hidden"; // स्क्रोलिंग बंद
 }
 
 function closeLetter() {
     const modal = document.getElementById('letterModal');
     modal.style.display = "none";
+    document.body.style.overflow = "auto"; // स्क्रोलिंग पुन्हा सुरू
 }
 
+// बाहेर क्लिक केल्यावर बंद करण्यासाठी
 window.onclick = function(event) {
     const modal = document.getElementById('letterModal');
     if (event.target == modal) {
-        modal.style.display = "none";
+        closeLetter();
     }
 }
