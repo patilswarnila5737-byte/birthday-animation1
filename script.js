@@ -36,7 +36,8 @@ window.onload = function() {
 
 function openLetter() {
     const modal = document.getElementById('letterModal');
-    modal.style.display = "flex";
+    modal.style.display = "flex"; // "block" ऐवजी "flex" वापरा
+    document.body.style.overflow = "hidden"; // पत्र उघडल्यावर स्क्रोलिंग बंद
 }
 
 function closeLetter() {
