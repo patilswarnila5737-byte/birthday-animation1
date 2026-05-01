@@ -1,4 +1,4 @@
-/* जुनी CSS तशीच ठेवा आणि हे लोडिंग सेक्शन त्यात अ‍ॅड करा */
+/* १. बेसिक रिसेट आणि बॉडी */
 body, html {
     margin: 0;
     padding: 0;
@@ -7,35 +7,35 @@ body, html {
     background: #000;
     overflow: hidden;
     display: flex;
-    flex-direction: column; /* मोबाईलवर एका खाली एक दिसण्यासाठी */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center; /* सर्व टेक्स्ट सेंटरला करण्यासाठी */
+    text-align: center;
 }
 
-/* लोडिंग स्क्रीन स्टाइल */
+/* २. लोडिंग स्क्रीन स्टाइल */
 #loading-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* पूर्ण रुंदी */
-    height: 100vh; /* पूर्ण उंची */
+    width: 100vw;
+    height: 100vh;
     background-color: #000;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* उभं सेंटर */
-    align-items: center; /* आडवं सेंटर */
-    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000; /* सर्वात वर राहण्यासाठी */
 }
 
 #countdown {
-    font-size: 5rem; /* मोबाईलसाठी थोडा लहान */
+    font-size: 5rem;
     color: #fff;
     margin-bottom: 20px;
 }
 
 .loader-bar-bg {
-    width: 80%; /* मोबाईलवर स्क्रीनच्या ८०% रुंदी */
+    width: 80%;
     max-width: 300px;
     height: 8px;
     background: #222;
@@ -43,17 +43,14 @@ body, html {
 }
 
 #loader-fill {
-    width: 0%; height: 100%; background: #c91195;
+    width: 0%; 
+    height: 100%; 
+    background: #c91195;
     box-shadow: 0 0 15px #c91195;
     transition: width 0.1s linear;
 }
 
-/* मुख्य मजकूर दिसताना बॅकग्राउंड बदलण्यासाठी */
-.main-bg-active {
-    background: linear-gradient(to bottom, #1a2a6c, #000000) !important;
-}
-
-/* तुझी आधीची सर्व CSS (bg-container, zoom-message, modal इ.) खाली तशीच पेस्ट कर */
+/* ३. बॅकग्राउंड अ‍ॅनिमेशन स्टाइल्स */
 .bg-container { position: absolute; width: 100%; height: 100%; z-index: 0; filter: blur(40px); }
 .light-streak { position: absolute; border-radius: 50%; opacity: 0.6; mix-blend-mode: screen; }
 .s1 { width: 400px; height: 300px; background: radial-gradient(circle, #ff4b2b, transparent); bottom: -50px; left: -100px; transform: rotate(-20deg); }
@@ -61,129 +58,96 @@ body, html {
 .s3 { width: 350px; height: 450px; border: 15px solid rgba(255, 182, 193, 0.3); border-radius: 50% 50% 0 0; top: 20%; left: 30%; transform: rotate(-10deg); }
 .s4 { width: 300px; height: 400px; border: 10px solid rgba(255, 255, 255, 0.2); border-radius: 50%; top: 10%; right: 20%; }
 
+.main-bg-active {
+    background: linear-gradient(to bottom, #1a2a6c, #000000) !important;
+}
+
+/* ४. मुख्य मजकूर आणि एन्व्हलोप */
 #intro-overlay {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* वरून खाली सुद्धा सेंटरला राहील */
+    justify-content: center;
     z-index: 10;
 }
-.zoom-message { display: flex; flex-direction: column; align-items: center; font-family: 'Great Vibes', cursive; color: #c91195; text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); opacity: 0; transform: scale(0.1); animation: zoomInAndStop 4s forwards ease-out; }
+
+.zoom-message { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    font-family: 'Great Vibes', cursive; 
+    color: #c91195; 
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); 
+    opacity: 0; 
+    transform: scale(0.1); 
+    animation: zoomInAndStop 4s forwards ease-out; 
+}
+
 .happy { font-size: 3.5rem; margin-bottom: 7px; }
 .birthday { font-size: 7.5rem; line-height: 1.1; }
+
 @keyframes zoomInAndStop { 0% { transform: scale(0.1); opacity: 0; } 100% { transform: scale(1.1); opacity: 1; } }
 
-.envelope-container { margin-top: 30px; display: flex; flex-direction: column; align-items: center; opacity: 0; animation: fadeInEnvelope 1.5s forwards; animation-delay: 1s; /* लोडिंगनंतर १ सेकंदात दिसेल */ }
-.envelope { width: 150px; cursor: pointer; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); transition: transform 0.3s; }
-.click-hint { margin-top: 10px; text-align: center; color: #ffffff; font-family: Arial, sans-serif; font-size: 14px; text-transform: uppercase; }
-.arrow { font-size: 20px; margin-bottom: 5px; color: #ff4b2b; animation: bounce 1s infinite; }
+.envelope-container { 
+    margin-top: 30px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    opacity: 0; 
+    animation: fadeInEnvelope 1.5s forwards; 
+    animation-delay: 1s; 
+}
+
+.envelope { width: 140px; cursor: pointer; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); transition: transform 0.3s; }
+.click-hint { margin-top: 10px; color: #ffffff; font-family: Arial, sans-serif; font-size: 14px; text-transform: uppercase; }
+.arrow { font-size: 20px; color: #ff4b2b; animation: bounce 1s infinite; }
+
 @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 @keyframes fadeInEnvelope { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-.modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); justify-content: center; align-items: center; }
-.letter-content { background-color: #fdf5e6; padding: 30px; width: 80%; max-width: 500px; border-radius: 10px; position: relative; font-family: 'Great Vibes', cursive; animation: slideUp 0.5s ease-out; }
-@keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-.letter-text { font-size: 1.5rem; line-height: 1.6; text-align: center; }
-.letter-text h2 { color: #800020; margin-bottom: 15px; }
-.close-btn { position: absolute; right: 15px; top: 10px; font-size: 28px; cursor: pointer; color: #888; }
-.signature { margin-top: 20px; text-align: right; font-weight: bold; }
-
-/* मोबाईलसाठी खास बदल */
-@media (max-width: 600px) {
-    .happy {
-        font-size: 2.5rem; /* मोबाईलवर थोडा लहान फॉन्ट */
-    }
-    .birthday {
-        font-size: 4.5rem; /* मोबाईलवर बसण्यासाठी लहान साईज */
-        line-height: 1;
-    }
-    .envelope {
-        width: 120px; /* एन्व्हलोप थोडा लहान */
-    }
-    .letter-content {
-        width: 90%; /* पत्राची रुंदी मोबाईल स्क्रीननुसार */
-        padding: 15px;
-        font-size: 1.1rem;
-    }
-}
-
-/* Letter Modal फिक्स - पूर्णपणे सेंटरमध्ये येण्यासाठी */
-.modal {
-    display: none; /* सुरुवातीला लपवलेले */
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* गडद बॅकग्राउंड */
-    backdrop-filter: blur(5px);
-    
-    /* फ्लेक्सबॉक्स वापरून सेंटरिंग */
+/* ५. लेटर मोडल (अत्यंत महत्त्वाचा भाग - सेंटरिंगसाठी) */
+.modal { 
     display: none; 
-    justify-content: center;
-    align-items: center;
+    position: fixed; 
+    z-index: 4000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.9); 
+    backdrop-filter: blur(8px); 
+    justify-content: center; /* आडवं सेंटर */
+    align-items: center;     /* उभं सेंटर */
 }
 
-.letter-content {
-    background-color: #fdf5e6;
-    padding: 25px;
-    width: 90%; /* मोबाईल स्क्रीनच्या ९०% रुंदी */
-    max-width: 450px;
-    max-height: 85vh; /* स्क्रीनच्या उंचीपेक्षा जास्त वाढणार नाही */
-    border-radius: 15px;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    overflow-y: auto; /* मजकूर जास्त असल्यास स्क्रोल होईल */
+.letter-content { 
+    background-color: #fdf5e6; 
+    padding: 25px; 
+    width: 85%; 
+    max-width: 450px; 
+    max-height: 80vh; 
+    border-radius: 15px; 
+    position: relative; 
+    font-family: 'Great Vibes', cursive; 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    overflow-y: auto; 
     box-sizing: border-box;
-    
-    /* अ‍ॅनिमेशन */
-    animation: zoomInLetter 0.5s ease-out;
+    animation: zoomInLetter 0.5s ease-out; 
 }
 
-@keyframes zoomInLetter {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
+@keyframes zoomInLetter { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-.letter-text {
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.2rem; /* वाचनासाठी योग्य साईज */
-    line-height: 1.5;
-    text-align: center;
-    color: #333;
-}
+.letter-text { font-size: 1.3rem; line-height: 1.5; text-align: center; color: #333; }
+.letter-text h2 { color: #800020; margin-bottom: 15px; font-size: 1.8rem; }
+.close-btn { position: absolute; right: 15px; top: 10px; font-size: 32px; cursor: pointer; color: #888; }
+.signature { margin-top: 20px; text-align: right; font-weight: bold; color: #800020; }
 
-.letter-text h2 {
-    color: #800020;
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-}
-
-.close-btn {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #888;
-    z-index: 10;
-}
-
-.signature {
-    margin-top: 20px;
-    text-align: right;
-    font-weight: bold;
-    color: #800020;
-}
-
-/* मोबाईल व्ह्यूसाठी खास अ‍ॅडजस्टमेंट */
-@media (max-width: 480px) {
-    .letter-text {
-        font-size: 1.1rem;
-    }
-    .letter-content {
-        padding: 20px;
-    }
+/* ६. मोबाईल रिस्पॉन्सिव्हनेस (Media Queries) */
+@media (max-width: 600px) {
+    .happy { font-size: 2.2rem; }
+    .birthday { font-size: 4.2rem; }
+    .envelope { width: 110px; }
+    .letter-text { font-size: 1.1rem; }
+    .letter-content { padding: 20px; width: 90%; }
 }
