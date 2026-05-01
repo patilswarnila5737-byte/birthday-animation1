@@ -1,0 +1,66 @@
+/* जुनी CSS तशीच ठेवा आणि हे लोडिंग सेक्शन त्यात अ‍ॅड करा */
+body, html {
+    margin: 0; padding: 0; width: 100%; height: 100vh;
+    background: #000; /* सुरुवातीला काळा रंग */
+    overflow: hidden;
+    display: flex; justify-content: center; align-items: center;
+}
+
+/* लोडिंग स्क्रीन स्टाइल */
+#loading-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #000;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 1000;
+}
+
+#countdown {
+    font-size: 6rem; color: #fff;
+    font-family: Arial, sans-serif; font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.loader-bar-bg {
+    width: 250px; height: 8px; background: #222;
+    border-radius: 10px; overflow: hidden;
+}
+
+#loader-fill {
+    width: 0%; height: 100%; background: #c91195;
+    box-shadow: 0 0 15px #c91195;
+    transition: width 0.1s linear;
+}
+
+/* मुख्य मजकूर दिसताना बॅकग्राउंड बदलण्यासाठी */
+.main-bg-active {
+    background: linear-gradient(to bottom, #1a2a6c, #000000) !important;
+}
+
+/* तुझी आधीची सर्व CSS (bg-container, zoom-message, modal इ.) खाली तशीच पेस्ट कर */
+.bg-container { position: absolute; width: 100%; height: 100%; z-index: 0; filter: blur(40px); }
+.light-streak { position: absolute; border-radius: 50%; opacity: 0.6; mix-blend-mode: screen; }
+.s1 { width: 400px; height: 300px; background: radial-gradient(circle, #ff4b2b, transparent); bottom: -50px; left: -100px; transform: rotate(-20deg); }
+.s2 { width: 500px; height: 400px; background: radial-gradient(circle, #b22222, transparent); bottom: 50px; right: -100px; transform: rotate(30deg); }
+.s3 { width: 350px; height: 450px; border: 15px solid rgba(255, 182, 193, 0.3); border-radius: 50% 50% 0 0; top: 20%; left: 30%; transform: rotate(-10deg); }
+.s4 { width: 300px; height: 400px; border: 10px solid rgba(255, 255, 255, 0.2); border-radius: 50%; top: 10%; right: 20%; }
+
+#intro-overlay { width: 100%; display: flex; flex-direction: column; align-items: center; padding-top: 15vh; z-index: 10; }
+.zoom-message { display: flex; flex-direction: column; align-items: center; font-family: 'Great Vibes', cursive; color: #c91195; text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); opacity: 0; transform: scale(0.1); animation: zoomInAndStop 4s forwards ease-out; }
+.happy { font-size: 3.5rem; margin-bottom: 7px; }
+.birthday { font-size: 7.5rem; line-height: 1.1; }
+@keyframes zoomInAndStop { 0% { transform: scale(0.1); opacity: 0; } 100% { transform: scale(1.1); opacity: 1; } }
+
+.envelope-container { margin-top: 30px; display: flex; flex-direction: column; align-items: center; opacity: 0; animation: fadeInEnvelope 1.5s forwards; animation-delay: 1s; /* लोडिंगनंतर १ सेकंदात दिसेल */ }
+.envelope { width: 150px; cursor: pointer; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); transition: transform 0.3s; }
+.click-hint { margin-top: 10px; text-align: center; color: #ffffff; font-family: Arial, sans-serif; font-size: 14px; text-transform: uppercase; }
+.arrow { font-size: 20px; margin-bottom: 5px; color: #ff4b2b; animation: bounce 1s infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes fadeInEnvelope { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); justify-content: center; align-items: center; }
+.letter-content { background-color: #fdf5e6; padding: 30px; width: 80%; max-width: 500px; border-radius: 10px; position: relative; font-family: 'Great Vibes', cursive; animation: slideUp 0.5s ease-out; }
+@keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.letter-text { font-size: 1.5rem; line-height: 1.6; text-align: center; }
+.letter-text h2 { color: #800020; margin-bottom: 15px; }
+.close-btn { position: absolute; right: 15px; top: 10px; font-size: 28px; cursor: pointer; color: #888; }
+.signature { margin-top: 20px; text-align: right; font-weight: bold; }

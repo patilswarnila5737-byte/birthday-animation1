@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- १. लोडिंग सेक्शन (५ सेकंदांसाठी) -->
+    <div id="loading-overlay">
+        <div id="countdown">5</div>
+        <div class="loader-bar-bg">
+            <div id="loader-fill"></div>
+        </div>
+    </div>
+
+    <!-- २. बॅकग्राउंड लेयर्स -->
+    <div class="bg-container">
+        <div class="light-streak s1"></div>
+        <div class="light-streak s2"></div>
+        <div class="light-streak s3"></div>
+        <div class="light-streak s4"></div>
+    </div>
+
+    <!-- ३. मुख्य मजकूर (सुरुवातीला लपवलेला असेल) -->
+    <div id="main-content" style="display: none;">
+        <div id="intro-overlay">
+            <div class="zoom-message">
+                <span class="happy">Happy</span>
+                <span class="birthday">Birthday</span>
+            </div>
+
+            <div class="envelope-container" onclick="openLetter()">
+                <img src="https://png.pngtree.com/png-clipart/20240110/ourmid/pngtree-valentines-envelopes-png-image_11432129.png" alt="Envelope" class="envelope">
+                <div class="click-hint">
+                    <div class="arrow">↑</div>
+                    <p>Click Here</p>
+                </div>
+            </div>
+
+            <div id="letterModal" class="modal">
+                <div class="letter-content">
+                    <span class="close-btn" onclick="closeLetter()">&times;</span>
+                    <div class="letter-text">
+                        <h2>Wish you a very Happy Birthday! 🎂</h2>
+                        <p>May your day be filled with immense happiness 🥰</p>
+                        <p>I hope you liked this small gift from me 🩷</p>
+                        <p>You are still in my heart today and will remain there forever 🦢</p>
+                        <p>I miss you deeply every single moment 🥹</p>
+                        <p>I will always love you and miss you so much 🫶</p>
+                        <p>Once again, happy birthday, my sweet love 😚</p>
+                        <div class="signature">Forever yours: Swarnila</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
