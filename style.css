@@ -108,44 +108,82 @@ body, html {
     }
 }
 
+/* Letter Modal फिक्स - पूर्णपणे सेंटरमध्ये येण्यासाठी */
 .modal {
-    display: none;
+    display: none; /* सुरुवातीला लपवलेले */
     position: fixed;
     z-index: 2000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.85); /* गडद बॅकग्राउंड */
+    backdrop-filter: blur(5px);
+    
+    /* फ्लेक्सबॉक्स वापरून सेंटरिंग */
+    display: none; 
     justify-content: center;
     align-items: center;
 }
 
 .letter-content {
     background-color: #fdf5e6;
-    padding: 20px;
-    width: 85%; /* स्क्रीनच्या आत राहण्यासाठी */
-    max-height: 80vh; /* खूप मोठं होऊ नये म्हणून */
-    overflow-y: auto; /* जर टेक्स्ट जास्त असेल तर स्क्रोल होईल */
+    padding: 25px;
+    width: 90%; /* मोबाईल स्क्रीनच्या ९०% रुंदी */
+    max-width: 450px;
+    max-height: 85vh; /* स्क्रीनच्या उंचीपेक्षा जास्त वाढणार नाही */
     border-radius: 15px;
     position: relative;
-    box-sizing: border-box; /* पॅडिंगमुळे बाहेर जाणार नाही */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    overflow-y: auto; /* मजकूर जास्त असल्यास स्क्रोल होईल */
+    box-sizing: border-box;
+    
+    /* अ‍ॅनिमेशन */
+    animation: zoomInLetter 0.5s ease-out;
+}
+
+@keyframes zoomInLetter {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
 .letter-text {
-    font-size: 1.1rem; /* मोबाईलसाठी वाचन सुलभ साईज */
-    line-height: 1.4;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.2rem; /* वाचनासाठी योग्य साईज */
+    line-height: 1.5;
     text-align: center;
-    word-wrap: break-word; /* मोठे शब्द कट होणार नाहीत */
+    color: #333;
 }
 
 .letter-text h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    color: #800020;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
 }
 
-.birthday {
-    font-size: 4rem; /* मोबाईलवर स्क्रीनमध्ये बसण्यासाठी लहान */
-    text-align: center;
-    white-space: nowrap; /* शब्द एका ओळीत ठेवण्यासाठी */
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #888;
+    z-index: 10;
+}
+
+.signature {
+    margin-top: 20px;
+    text-align: right;
+    font-weight: bold;
+    color: #800020;
+}
+
+/* मोबाईल व्ह्यूसाठी खास अ‍ॅडजस्टमेंट */
+@media (max-width: 480px) {
+    .letter-text {
+        font-size: 1.1rem;
+    }
+    .letter-content {
+        padding: 20px;
+    }
 }
