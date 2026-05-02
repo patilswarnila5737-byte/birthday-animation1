@@ -34,16 +34,16 @@ window.onload = function() {
 function openLetter() {
     const modal = document.getElementById('letterModal');
     modal.style.display = "flex"; 
-    document.body.style.overflow = "hidden"; // स्क्रोलिंग बंद
+    document.body.style.overflow = "hidden"; 
 }
 
 function closeLetter() {
     const modal = document.getElementById('letterModal');
     modal.style.display = "none";
-    document.body.style.overflow = "auto"; // स्क्रोलिंग पुन्हा सुरू
+    document.body.style.overflow = "auto"; 
 }
 
-// बाहेर क्लिक केल्यावर बंद करण्यासाठी
+
 window.onclick = function(event) {
     const modal = document.getElementById('letterModal');
     if (event.target == modal) {
